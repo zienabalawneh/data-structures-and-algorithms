@@ -7,7 +7,11 @@ Write a function named `addOne` that takes an array of numbers, and returns a ne
 
 Use `forEach` to loop over the input array and work with each value.  Push the new value into a local array. Return the local array;
 ------------------------------------------------------------------------------------------------ */
-
+// describe('Testing challenge 1', () => {
+//   test('It should return an array with 1 added to each value of the original array', () => {
+//     expect(addOne([1, 2, 3, 4, 5])).toStrictEqual([2, 3, 4, 5, 6]);
+//   });
+// });
 const addOne = (arr) => {
   // Solution code here...
     let newArr = [];
@@ -25,7 +29,11 @@ Write a function named `addExclamation` that takes an array of strings, and retu
 
 Use `forEach` to loop over the input array. Modify each string, and add the updated value into a local array. Return the local array;
 ------------------------------------------------------------------------------------------------ */
-
+// describe('Testing challenge 2', () => {
+//   test('It should return an array with an exclamation point added to each value of the original array', () => {
+//     expect(addExclamation(['hi', 'how', 'are', 'you'])).toStrictEqual(['hi!', 'how!', 'are!', 'you!']);
+//   });
+// });
 const addExclamation = (arr) => {
   // Solution code here...
   let newArr=[];
@@ -61,7 +69,11 @@ Then, write a function named `speaker` that takes in an array of strings and a c
 
 Use `forEach` to build a new array of strings, each string modified by the callback. Return the new array. 
 ------------------------------------------------------------------------------------------------ */
-
+// describe('Testing challenge 4', () => {
+//   test('It should provide an array of strings, that get uppercased, and a "!" at the end', () => {
+//     expect(speaker(['hello', '301', 'students'], greeting)).toStrictEqual(['HELLO!', '301!', 'STUDENTS!']);
+//   });
+// });
 const greeting = (word) => {
   // Solution code here...
   return word.toUpperCase()+'!';
@@ -94,13 +106,24 @@ Within the addNumbers function, invoke the callback function as many times as ne
 
 Return the modified array.
 ------------------------------------------------------------------------------------------------ */
-
+// describe('Testing challenge 5', () => {
+//   test('It should add the number 8 to the array five times', () => {
+//     expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
+//     expect(addNumbers(8, [], 5, addValues).length).toStrictEqual(5);
+//   });
+// });
 const addValues = (arr, value) => {
   // Solution code here...
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
+
+  for(let i=0;i<times;i++){
+    callback(arr,num);
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -120,9 +143,25 @@ The inventory is formatted like this:
 
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
+// describe('Testing challenge 6', () => {
+//   const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
 
+//   test('It should only add the available items to the list', () => {
+//     expect(createList(inventory)).toStrictEqual(['apples', 'pears', 'bananas']);
+//     expect(createList(inventory).length).toStrictEqual(3);
+//   });
+// });
 const createList = (availableItems) => {
   // Solution code here...
+
+let listItem=[];
+availableItems.forEach((val,i)=>{
+  if(availableItems[i].available===true){
+    listItem.push(availableItems[i].name);
+  }
+});
+return listItem;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -138,9 +177,34 @@ Iterate over the array using forEach to determine the output based on several ru
 
 Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
+// describe('Testing challenge 7', () => {
+//   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
+//   test('It should print out messages or numbers', () => {
+//     expect(fizzbuzz(inputs)).toStrictEqual([1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'Fizz Buzz', 16]);
+//     expect(fizzbuzz(inputs).length).toStrictEqual(16);
+//   });
+// });
 const fizzbuzz = (arr) => {
   // Solution code here...
+
+  let arrResul =[];
+  arr.forEach(val =>{
+    if((val %3===0)&& !(val %5===0)){
+      arrResul.push('Fizz');
+    }
+    else if ((val %5===0)&& !(val %3===0)){
+      arrResul.push('Buzz');
+    }
+    else if (val %3===0 && val %5===0){
+      arrResul.push('Fizz Buzz');
+
+    }
+    else {
+      arrResul.push(val);
+    }
+  });
+  return arrResul;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -194,7 +258,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
