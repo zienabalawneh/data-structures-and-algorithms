@@ -28,8 +28,6 @@ HINT: Look at the tests to see how the callback functions are used.
 
 
 // const arr = ['BeAr', 'lIon'];
-
-
 function upper(str) {
   return str.toUpperCase();
 }
