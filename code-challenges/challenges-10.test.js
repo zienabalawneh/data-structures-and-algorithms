@@ -62,12 +62,6 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
-  return matrix.reduce((acc1,val1)=>{
-    let sum=val1.reduce((acc2,val2)=>{
-      return acc2+=val2;
-    },0);
-    return acc1+=sum;
-  },0);
 };
 
 
