@@ -20,7 +20,6 @@ Becomes:
 
 function transformToLis(obj) {
   // Solution code here...
-
   let arr = [];
   let objectdata = Object.entries(obj);
   for (let index = 0; index < objectdata.length; index++) {
