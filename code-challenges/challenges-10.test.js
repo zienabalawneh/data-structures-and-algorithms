@@ -7,10 +7,10 @@ Write a function named returnTen, takes in a string and uses split and splice to
 
 ------------------------------------------------------------------------------------------------ */
 
-function returnTen(str){
+function returnTen(str) {
   // Solution code here...
-  let arr=str.split('');
-  let arr2= arr.splice(arr.length -10);
+  let arr = str.split('');
+  let arr2 = arr.splice(arr.length - 10);
   return arr2;
 }
 
@@ -30,20 +30,20 @@ return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
   // Solution code here...
-  return matrix.reduce((acc1,val1)=>{
-    let max=val1.reduce((acc2,val2)=>{
-      if(acc2>val2){
+  return matrix.reduce((acc1, val1) => {
+    let max = val1.reduce((acc2, val2) => {
+      if (acc2 > val2) {
         return acc2;
-      }else{
-        return acc2=val2;
+      } else {
+        return acc2 = val2;
       }
-    },0);
-    if(acc1>max){
+    }, 0);
+    if (acc1 > max) {
       return acc1;
-    }else{
-      return acc1=max;
+    } else {
+      return acc1 = max;
     }
-  },0);
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -62,12 +62,12 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
-  return matrix.reduce((acc1,val1)=>{
-    let sum=val1.reduce((acc2,val2)=>{
-      return acc2+=val2;
-    },0);
-    return acc1+=sum;
-  },0);
+  return matrix.reduce((acc1, val1) => {
+    let sum = val1.reduce((acc2, val2) => {
+      return acc2 += val2;
+    }, 0);
+    return acc1 += sum;
+  }, 0);
 };
 
 
@@ -95,6 +95,13 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
+  let arr = [];
+  for (let i = 0; i < stores[0].length; i++) {
+    let sum = 0;
+    for (let j = 0; j < stores.length; j++) {
+      sum += stores[j][i];
+    } arr.push(sum);
+  } return arr;
 
 };
 
@@ -110,6 +117,13 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 
 const salesData = (hours, data) => {
   // Solution code here...
+  data.forEach((hour, i) => {
+    arr.push({
+      sales: `${hour} cookies`,
+      time: `${hours[i]}`
+    });
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,6 +149,11 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, val) => {
+    return val.items.reduce((acc2, val2) => {
+      return val2.name === 'Treats' ? val2.quantity : acc2;
+    }, '');
+  }, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -241,20 +260,20 @@ Run your tests from the console: jest challenge-12.test.js
 
 describe('Testing challenge 1', () => {
   test('it should return the last 10 characters of a string as an array', () => {
-    expect(returnTen('hello world')).toStrictEqual(['e','l','l','o',' ','w','o','r','l','d']);
-    expect(returnTen('world')).toStrictEqual(['w','o','r','l','d']);
+    expect(returnTen('hello world')).toStrictEqual(['e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']);
+    expect(returnTen('world')).toStrictEqual(['w', 'o', 'r', 'l', 'd']);
   });
 });
 
 describe('Testing challenge 2', () => {
   test('It should return the max value', () => {
-    expect(findMax([[13,24,24,2], [2,5,6], [2,3]])).toStrictEqual(24);
+    expect(findMax([[13, 24, 24, 2], [2, 5, 6], [2, 3]])).toStrictEqual(24);
   });
 });
 
 describe('Testing challenge 3', () => {
   test('It should return the total sum', () => {
-    expect(totalSum([[13,24,24,2], [2,5,6], [2,3]])).toStrictEqual(81);
+    expect(totalSum([[13, 24, 24, 2], [2, 5, 6], [2, 3]])).toStrictEqual(81);
     expect(totalSum([])).toStrictEqual(0);
   });
 });
